@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.acme.demo";
+
+package demo;
+
+service Demo {
+  rpc ListIds (ListRequest) returns (stream IdReply);
+  rpc Lookup (LookupRequest) returns (LookupReply);
+}
+
+message ListRequest {
+  int32 count = 1;
+}
+
+message IdReply {
+  string id = 1;
+}
+
+message LookupRequest {
+  repeated string ids = 1;
+}
+
+message LookupReply {
+  int32 count = 1;
+}
